@@ -7,9 +7,11 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -31,13 +33,18 @@ namespace CardanoManagementTool
         private void myButton_Click(object sender, RoutedEventArgs e)
         {
             myButton.Content = "Clicked";
-            System.Diagnostics.ProcessStartInfo PR = new System.Diagnostics.ProcessStartInfo("ping","google.com");
-            PR.RedirectStandardInput = true;
-            PR.RedirectStandardOutput = true;
-            PR.UseShellExecute = false;
-            PR.CreateNoWindow = true;
-            System.Diagnostics.Process StartPR = new System.Diagnostics.Process();
-            StartPR.StartInfo = PR;
+            ProcessStartInfo processStartInfo = new("ping", "google.com")
+            {
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                UseShellExecute = false,
+                CreateNoWindow = true
+            };
+            ProcessStartInfo PR = processStartInfo;
+            Process StartPR = new()
+            {
+                StartInfo = PR
+            };
             StartPR.Start();
 
             string line = "";
@@ -53,22 +60,60 @@ namespace CardanoManagementTool
 
             //StreamReader reader = StartPR.StandardOutput;
             //var test = reader.ReadToEnd();
-            System.Diagnostics.ProcessStartInfo PR1 = new System.Diagnostics.ProcessStartInfo("bash", "ls");
-            PR.RedirectStandardInput = true;
-            PR.RedirectStandardOutput = true;
-            PR.UseShellExecute = false;
-            PR.CreateNoWindow = true;
-            System.Diagnostics.Process StartPR1 = new System.Diagnostics.Process();
-            StartPR.StartInfo = PR;
-            StartPR.Start();
+            ProcessStartInfo PR1 = new("bash", @"-c ""cd ~/ ; ls"" ")
+            {
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                UseShellExecute = false,
+                CreateNoWindow = true,
+                StandardOutputEncoding = Encoding.UTF8,
+                StandardErrorEncoding = Encoding.UTF8
+            };
+            Process StartPR1 = new()
+            {
+                StartInfo = PR1
+            };
+            StartPR1.Start();
+
+            //StartPR1.StandardInput.WriteLine("bash");
+            //StartPR1.StandardInput.WriteLine("ls");
+            //System.Threading.Thread.Sleep(500);
+            //StartPR1.StandardInput.Flush();
+            //StartPR1.StandardInput.Close();
+            //StartPR1.WaitForExit(5000);
 
 
-            StartPR.WaitForExit();
-            StartPR.StandardInput.Write("ipconfig");
-            StartPR.StandardInput.Flush();
-            StartPR.StandardInput.Close();
+            using (StreamReader reader = StartPR1.StandardOutput)
+            {
+                while ((line = reader.ReadLine()) != null)
+                {
+                    Console.WriteLine(line);
+                }
+                // Console.WriteLine("First line contains: " + result);
+            }
+
+            StartPR1.WaitForExit();
+  
             //reader = StartPR.StandardOutput;
             //var test1 = reader.ReadToEnd();
+        }
+
+        private static Process RunNew(string file, string args, string workingDir)
+        {
+            ProcessStartInfo processStartInfo = new ProcessStartInfo(file, args)
+            {
+                WindowStyle = ProcessWindowStyle.Minimized,
+                UseShellExecute = false,
+                RedirectStandardOutput = true,
+                RedirectStandardError = true,
+                WorkingDirectory = workingDir,
+                StandardOutputEncoding = Encoding.UTF8,
+                StandardErrorEncoding = Encoding.UTF8,
+            };
+
+            Process process = Process.Start(processStartInfo);
+            return process;
         }
     }
 }

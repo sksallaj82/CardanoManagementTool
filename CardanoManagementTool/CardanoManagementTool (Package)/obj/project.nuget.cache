@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "ZEOLgNuE8kJWino7kiqAFgZhyClvkxbsZZzp/2SOIiwCHSH2EBG6AZ+Z+X/A1X9EQuACtykX5xIPNR0pY2JZ1A==",
+  "dgSpecHash": "w/uA1xKQRwNdAR2UpvhYvJu/cdx0QVrYtR5mzCrECOtPue8LXh+2Jks4H0X/mLO/IzDgbRY/jwEWxtspAO9lbw==",
   "success": true,
-  "projectFilePath": "C:\\Workspace\\CMT\\CardanoManagementTool\\CardanoManagementTool\\CardanoManagementTool (Package)\\CardanoManagementTool (Package).wapproj",
+  "projectFilePath": "C:\\Workspace\\CMT\\CardanoManagementTool\\CardanoManagementTool (Package)\\CardanoManagementTool (Package).wapproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Shadow\\.nuget\\packages\\microsoft.projectreunion\\0.8.4\\microsoft.projectreunion.0.8.4.nupkg.sha512",
-    "C:\\Users\\Shadow\\.nuget\\packages\\microsoft.projectreunion.dwrite\\0.8.4\\microsoft.projectreunion.dwrite.0.8.4.nupkg.sha512",
-    "C:\\Users\\Shadow\\.nuget\\packages\\microsoft.projectreunion.foundation\\0.8.4\\microsoft.projectreunion.foundation.0.8.4.nupkg.sha512",
-    "C:\\Users\\Shadow\\.nuget\\packages\\microsoft.projectreunion.interactiveexperiences\\0.8.4\\microsoft.projectreunion.interactiveexperiences.0.8.4.nupkg.sha512",
-    "C:\\Users\\Shadow\\.nuget\\packages\\microsoft.projectreunion.winui\\0.8.4\\microsoft.projectreunion.winui.0.8.4.nupkg.sha512"
+    "C:\\Users\\sksal\\.nuget\\packages\\microsoft.projectreunion\\0.8.4\\microsoft.projectreunion.0.8.4.nupkg.sha512",
+    "C:\\Users\\sksal\\.nuget\\packages\\microsoft.projectreunion.dwrite\\0.8.4\\microsoft.projectreunion.dwrite.0.8.4.nupkg.sha512",
+    "C:\\Users\\sksal\\.nuget\\packages\\microsoft.projectreunion.foundation\\0.8.4\\microsoft.projectreunion.foundation.0.8.4.nupkg.sha512",
+    "C:\\Users\\sksal\\.nuget\\packages\\microsoft.projectreunion.interactiveexperiences\\0.8.4\\microsoft.projectreunion.interactiveexperiences.0.8.4.nupkg.sha512",
+    "C:\\Users\\sksal\\.nuget\\packages\\microsoft.projectreunion.winui\\0.8.4\\microsoft.projectreunion.winui.0.8.4.nupkg.sha512"
   ],
   "logs": [
     {
