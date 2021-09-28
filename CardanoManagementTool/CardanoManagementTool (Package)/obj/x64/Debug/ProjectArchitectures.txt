@@ -1,0 +1,1 @@
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\CardanoManagementTool (Package)\CardanoManagementTool (Package).wapproj;x64
