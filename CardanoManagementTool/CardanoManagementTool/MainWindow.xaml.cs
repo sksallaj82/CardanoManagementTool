@@ -7,16 +7,21 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.Core;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
+
+//https://stackoverflow.com/questions/56976636/how-to-update-textblock-in-real-time
 
 namespace CardanoManagementTool
 {
@@ -25,6 +30,7 @@ namespace CardanoManagementTool
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             this.InitializeComponent();
@@ -33,87 +39,57 @@ namespace CardanoManagementTool
         private void myButton_Click(object sender, RoutedEventArgs e)
         {
             myButton.Content = "Clicked";
-            ProcessStartInfo processStartInfo = new("ping", "google.com")
-            {
-                RedirectStandardInput = true,
-                RedirectStandardOutput = true,
-                UseShellExecute = false,
-                CreateNoWindow = true
-            };
-            ProcessStartInfo PR = processStartInfo;
-            Process StartPR = new()
-            {
-                StartInfo = PR
-            };
-            StartPR.Start();
+            Process p = RunNew("ping", "google.com");
+            p.OutputResult(myTerminalLog, myScroller);
 
-            string line = "";
-            var result = "";
-            using (StreamReader reader = StartPR.StandardOutput)
-            {
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Console.WriteLine(line);
-                }
-               // Console.WriteLine("First line contains: " + result);
-            }
+            Process p1 = RunNew("bash", @"-c ""cd ~/ ; ls"" ");
+            p1.OutputResult(myTerminalLog, myScroller);
 
-            //StreamReader reader = StartPR.StandardOutput;
-            //var test = reader.ReadToEnd();
-            ProcessStartInfo PR1 = new("bash", @"-c ""cd ~/ ; ls"" ")
-            {
-                RedirectStandardInput = true,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                UseShellExecute = false,
-                CreateNoWindow = true,
-                StandardOutputEncoding = Encoding.UTF8,
-                StandardErrorEncoding = Encoding.UTF8
-            };
-            Process StartPR1 = new()
-            {
-                StartInfo = PR1
-            };
-            StartPR1.Start();
-
-            //StartPR1.StandardInput.WriteLine("bash");
-            //StartPR1.StandardInput.WriteLine("ls");
-            //System.Threading.Thread.Sleep(500);
-            //StartPR1.StandardInput.Flush();
-            //StartPR1.StandardInput.Close();
-            //StartPR1.WaitForExit(5000);
-
-
-            using (StreamReader reader = StartPR1.StandardOutput)
-            {
-                while ((line = reader.ReadLine()) != null)
-                {
-                    Console.WriteLine(line);
-                }
-                // Console.WriteLine("First line contains: " + result);
-            }
-
-            StartPR1.WaitForExit();
-  
             //reader = StartPR.StandardOutput;
             //var test1 = reader.ReadToEnd();
         }
 
-        private static Process RunNew(string file, string args, string workingDir)
+        private static Process RunNew(string file, string args)
         {
             ProcessStartInfo processStartInfo = new ProcessStartInfo(file, args)
             {
-                WindowStyle = ProcessWindowStyle.Minimized,
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
+                CreateNoWindow = true,
                 RedirectStandardError = true,
-                WorkingDirectory = workingDir,
-                StandardOutputEncoding = Encoding.UTF8,
+                RedirectStandardOutput = true,
                 StandardErrorEncoding = Encoding.UTF8,
+                StandardOutputEncoding = Encoding.UTF8,
+                UseShellExecute = false
             };
 
             Process process = Process.Start(processStartInfo);
             return process;
+        }
+    }
+
+    public static class ProcessExtensions
+    {
+        public async static void OutputResult(this Process process, TextBlock uiElement, ScrollViewer scroller)
+        {
+            string line;
+            await Task.Run(() => {
+                _ = uiElement.DispatcherQueue.TryEnqueue(async () =>
+                  {
+                      using (StreamReader reader = process.StandardOutput)
+                      {
+                          while ((line = await reader.ReadLineAsync()) != null)
+                          {
+                              uiElement.Text += line + Environment.NewLine;
+                              await scroller.ScrollToBottom();
+                          }
+                      };
+                  });
+            });
+        }
+
+        public async static Task ScrollToBottom(this ScrollViewer scroller)
+        {
+            scroller.ScrollToVerticalOffset(scroller.ScrollableHeight);
+            await Task.Delay(1);
         }
     }
 }

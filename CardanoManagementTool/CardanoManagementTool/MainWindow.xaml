@@ -7,7 +7,30 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid x:Name="LayoutRoot" Width="1000" Height="500">
+        <StackPanel>
+            <TextBlock Text="CARDANO MANAGEMENT TOOL" 
+                       FontSize="24"
+                       />
+            <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
+            <TextBlock 
+                       Text="This text demonstrates some TextBlock properties." 
+                       IsTextSelectionEnabled="True" 
+                       SelectionHighlightColor="Green" 
+                       Foreground="Blue" 
+                       FontWeight="Light" 
+                       FontFamily="Arial" 
+                       FontStyle="Italic"/>
+            <ScrollViewer 
+                  x:Name="myScroller"
+                  Height="200" Width="500" 
+                  HorizontalScrollBarVisibility="Auto" 
+                  VerticalScrollBarVisibility="Visible">
+                <TextBlock x:Name="myTerminalLog"
+                           Width="500" 
+                           TextWrapping="Wrap"
+                           Text="{Binding Path=TerminalLog, UpdateSourceTrigger=Explicit}" />
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
 </Window>
