@@ -36,3 +36,41 @@ C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\CardanoManagementTo
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\ProjectArchitectures.txt
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\CardanoManagementTool (Package).wapproj.LastBuild.txt
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\App.xbf
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\MainWindow.xbf
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\Microsoft.ApplicationModel.Resources.Projection.dll
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\Microsoft.WinUI.dll
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\Microsoft.Windows.SDK.NET.dll
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\WinRT.Runtime.dll
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\CardanoManagementTool.deps.json
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\CardanoManagementTool.runtimeconfig.dev.json
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\App.xbf
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\MainWindow.xbf
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\CardanoManagementTool.exe
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\Microsoft.ApplicationModel.Resources.Projection.pdb
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\CardanoManagementTool.runtimeconfig.json
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\CardanoManagementTool.dll
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool\CardanoManagementTool.pdb
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\resources.pri
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\AppxManifest.xml
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\bin\x64\Debug\CardanoManagementTool (Package).build.appxrecipe
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\CardanoManagementTool (Package).wapproj.AssemblyReference.cache
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\CardanoManagementTool (Package).wapproj.CoreCompileInputs.cache
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\CardanoManagementTool.pri.xml
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\priconfig.xml
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\priconfig.xml.intermediate
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\unfiltered.layout.resfiles
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\unfiltered.layout.resfiles.intermediate
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\filtered.layout.resfiles
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\filtered.layout.resfiles.intermediate
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\excluded.layout.resfiles
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\excluded.layout.resfiles.intermediate
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\resources.resfiles
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\resources.resfiles.intermediate
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\pri.resfiles
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\pri.resfiles.intermediate
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\qualifiers.txt
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\qualifiers.txt.intermediate
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\MultipleQualifiersPerDimensionFound.txt
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\ProjectArchitectures.txt
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\obj\x64\Debug\CardanoManagementTool (Package).wapproj.LastBuild.txt

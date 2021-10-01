@@ -1,1 +1,1 @@
-C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\CardanoManagementTool (Package)\CardanoManagementTool (Package).wapproj;x86
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool (Package)\CardanoManagementTool (Package).wapproj;x86
