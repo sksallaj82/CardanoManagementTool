@@ -1,4 +1,5 @@
-﻿using Microsoft.UI.Xaml;
+﻿using CardanoManagementTool.Infrastructure;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
@@ -30,6 +31,7 @@ namespace CardanoManagementTool
     /// </summary>
     public sealed partial class MainWindow : Window
     {
+        ProcessManager processManager = new();
 
         public MainWindow()
         {
@@ -39,19 +41,32 @@ namespace CardanoManagementTool
         private void myButton_Click(object sender, RoutedEventArgs e)
         {
             myButton.Content = "Clicked";
-            Process p = RunNew("ping", "google.com");
+            ProcessCommand pc1 = new()
+            {
+                file = "ping",
+                args = "google.com",
+                name = ProcessType.StartCardanoNode
+            };
+            Process p = RunNew(pc1);
             p.OutputResult(myTerminalLog, myScroller);
 
-            Process p1 = RunNew("bash", @"-c ""cd ~/ ; ls"" ");
+            ProcessCommand pc2 = new()
+            {
+                file = "bash",
+                args = @"-c ""cd ~/ ; ls"" ",
+                name = ProcessType.StartCardanoNode
+            };
+            Process p1 = RunNew(pc2);
             p1.OutputResult(myTerminalLog, myScroller);
+            
 
             //reader = StartPR.StandardOutput;
             //var test1 = reader.ReadToEnd();
         }
 
-        private static Process RunNew(string file, string args)
+        private Process RunNew(ProcessCommand command)
         {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo(file, args)
+            ProcessStartInfo processStartInfo = new ProcessStartInfo(command.file, command.args)
             {
                 CreateNoWindow = true,
                 RedirectStandardError = true,
@@ -62,6 +77,8 @@ namespace CardanoManagementTool
             };
 
             Process process = Process.Start(processStartInfo);
+            processManager.Add(process, command.name);
+
             return process;
         }
     }
@@ -84,6 +101,12 @@ namespace CardanoManagementTool
                       };
                   });
             });
+        }
+
+        public static List<(int, Process, string)> AddToProcessManager(this Process process, List<(int,Process,string)> list)
+        {
+            list.Add((process.Id, process, process.ProcessName));
+            return list;
         }
 
         public async static Task ScrollToBottom(this ScrollViewer scroller)
