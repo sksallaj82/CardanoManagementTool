@@ -36,77 +36,103 @@ namespace CardanoManagementTool
         public MainWindow()
         {
             this.InitializeComponent();
+
         }
 
         private void myButton_Click(object sender, RoutedEventArgs e)
         {
             myButton.Content = "Clicked";
+            //ProcessCommand pc1 = new()
+            //{
+            //    file = "ping",
+            //    args = "google.com",
+            //    name = CommandType.StartCardanoNode
+            //};
+
+            //Looking for Docker version 20.10.8, build 3967b7d
             ProcessCommand pc1 = new()
             {
-                file = "ping",
-                args = "google.com",
-                name = ProcessType.StartCardanoNode
-            };
-            Process p = RunNew(pc1);
-            p.OutputResult(myTerminalLog, myScroller);
-
-            ProcessCommand pc2 = new()
-            {
-                file = "bash",
-                args = @"-c ""cd ~/ ; ls"" ",
-                name = ProcessType.StartCardanoNode
-            };
-            Process p1 = RunNew(pc2);
-            p1.OutputResult(myTerminalLog, myScroller);
-            
-
-            //reader = StartPR.StandardOutput;
-            //var test1 = reader.ReadToEnd();
-        }
-
-        private Process RunNew(ProcessCommand command)
-        {
-            ProcessStartInfo processStartInfo = new ProcessStartInfo(command.file, command.args)
-            {
-                CreateNoWindow = true,
-                RedirectStandardError = true,
-                RedirectStandardOutput = true,
-                StandardErrorEncoding = Encoding.UTF8,
-                StandardOutputEncoding = Encoding.UTF8,
-                UseShellExecute = false
+                file = "docker",
+                args = "-v",
+                name = CommandType.StartCardanoNode
             };
 
-            Process process = Process.Start(processStartInfo);
-            processManager.Add(process, command.name);
+            //REPOSITORY: inputoutput/cardano-node  (look for this tag)
+            //TAG: latest
+            //IMAGE ID
+            //CREATED
+            //SIZE
+            pc1.args = "image ls"; //running images
 
-            return process;
+            //You can run these in docker as much as you want, it will not create new ones
+            pc1.args = "volume create cardano-node-data"; //running containers
+            pc1.args = "volume create cardano-node-ipc"; //all containers
+
+            pc1.args = "volume ls"; //volumes
+
+            //ancestor=inputoutput/cardano-node:latest checks image with tag latest
+            //ancestor=inputoutput/cardano-node checks for image regarless of tag
+            //loop through containers "container ls --filter ancestor=inputoutput/cardano-node" - for stopping running
+            //loop "container ls --filter network=mainnet"
+            pc1.args = "stop"; //gracefully stops container, will kill after 10 seconds
+
+            //loop through containers "container ls -a --filter ancestor=inputoutput/cardano-node" - for all containers
+            pc1.args = "rm";
+            Process p = processManager.Start(pc1);
+
+            //always get latest container name (regardless of status)
+            //its under NAME  -- last column
+            pc1.args = "container ls --latest";
+
+            //make mainnet a variable
+            //running a cardano node - this gets opened into a container
+            //Notes
+            //"block relay progress (%) = X.XX" shows %
+            //GO look at read me to see info we gather
+            pc1.args = "run -e NETWORK=mainnet -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node";
+
+            processManager.OutputResult(p, myTerminalLog, myScroller);
+
+
+            //CLI - for now, make it free form with access to the directory in the the container
+
+            //ProcessCommand pc2 = new()
+            //{
+            //    file = "bash",
+            //    args = @"-c ""cd ~/ ; ls"" ",
+            //    name = ProcessType.StartCardanoNode
+            //};
+            //Process p1 = processManager.Start(pc2);
+            //p1.OutputResult(myTerminalLog, myScroller);
         }
     }
 
     public static class ProcessExtensions
     {
-        public async static void OutputResult(this Process process, TextBlock uiElement, ScrollViewer scroller)
+        public async static void OutputResult(this ProcessManager pm, Process process, TextBlock uiElement, ScrollViewer scroller)
         {
             string line;
-            await Task.Run(() => {
-                _ = uiElement.DispatcherQueue.TryEnqueue(async () =>
-                  {
-                      using (StreamReader reader = process.StandardOutput)
+            if (ProcessManager.CheckRunning(process))
+            {
+                await Task.Run(() =>
+                {
+                    _ = uiElement.DispatcherQueue.TryEnqueue(async () =>
                       {
-                          while ((line = await reader.ReadLineAsync()) != null)
+                          using (StreamReader reader = process.StandardOutput)
                           {
-                              uiElement.Text += line + Environment.NewLine;
-                              await scroller.ScrollToBottom();
-                          }
-                      };
-                  });
-            });
-        }
-
-        public static List<(int, Process, string)> AddToProcessManager(this Process process, List<(int,Process,string)> list)
-        {
-            list.Add((process.Id, process, process.ProcessName));
-            return list;
+                              while ((line = await reader.ReadLineAsync()) != null)
+                              {
+                                  uiElement.Text += line + Environment.NewLine;
+                                  await scroller.ScrollToBottom();
+                              }
+                              if(reader.EndOfStream)
+                              {
+                                  pm.Stop(pm.FindProcessById(process.Id));
+                              }
+                          };
+                      });
+                });
+            }
         }
 
         public async static Task ScrollToBottom(this ScrollViewer scroller)
