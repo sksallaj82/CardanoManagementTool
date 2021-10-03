@@ -9,7 +9,7 @@ namespace CardanoManagementTool.Infrastructure
 {
     public enum CommandType
     {
-        CheckDocker,
+        None,
         StartCardanoNode,
         StopCardanoNode
     }

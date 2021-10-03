@@ -10,6 +10,6 @@ namespace CardanoManagementTool.Infrastructure
     {
         public string file { get; set; }
         public string args { get; set; }
-        public CommandType name { get; set; }
+        public CommandType name { get; set; } = CommandType.None;
     }
 }

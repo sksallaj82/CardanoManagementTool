@@ -1,5 +1,11 @@
 ﻿Changing config for node: https://github.com/input-output-hk/cardano-node/blob/master/doc/getting-started/understanding-config-files.md/
+minting tokens: https://developers.cardano.org/docs/native-tokens/minting/
 
+Cardano without docker
+Currently, the Windows installation guide is still in progress. In the meantime, we recommend using WSL (Windows Subsystem for Linux) to get 
+a Linux environment on top of Windows. Once installed, you can use the Linux guide to install and run cardano-node within WSL.
+
+Once docker is loaded
 
 Listening on http://127.0.0.1:12798
 
