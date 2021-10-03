@@ -147,6 +147,10 @@
             "Microsoft.ProjectReunion.WinUI": {
               "target": "Package",
               "version": "[0.8.4, )"
+            },
+            "System.Collections": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [
