@@ -1,4 +1,4 @@
-﻿using CardanoManagementTool.Infrastructure;
+﻿using CardanoManagementTool.Infrastructure.Service;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Core;
+using PM = CardanoManagementTool.Infrastructure.ProcessManager;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -32,73 +33,37 @@ namespace CardanoManagementTool
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        ProcessManager processManager = new();
-
-        public MainWindow()
-        {
+        public MainWindow() =>
             InitializeComponent();
-        }
 
-        Func<string, bool> CheckDockerVersion = line =>
-        {
-            string[] list = line.Split(", ");
-            return true;
-        };
-
-        Func<string, bool> CheckImageExist = line =>
-        {
-            //onsole.WriteLine(line);
-            string[] list = Regex.Replace(line, @"\s+", ",").Split();
-            return true;
-        };
-
-        Func<string, bool> CreateVolumes = line =>
-        {
-            //onsole.WriteLine(line);
-            return true;
-        };
 
 
         private void myButton_Click(object sender, RoutedEventArgs e)
         {
             myButton.Content = "Clicked";
-            //ProcessCommand pc1 = new()
+            //ProcessCommand commandTest = new()
             //{
             //    file = "ping",
             //    args = "google.com",
             //    name = CommandType.StartCardanoNode
             //};
 
-            Process p;
+            //p = processManager.Start(commandTest);
+            //processManager.OutputResult(p, myTerminalLog, myScroller, CreateVolumes);
 
-            //Looking for Docker version 20.10.8, build 3967b7d
-            ProcessCommand command = new()
+
+            ICardanoNodeService nodeService = new CardanoNodeContainerWrapper(true).ICardanoNodeService;
+
+            List<(Process Process, Func<string,bool> Callback)> workers = nodeService.Start();
+            //PM.OutputResult(p, myTerminalLog, myScroller, CheckDockerVersion);
+
+            foreach (var worker in workers)
             {
-                file = "docker",
-                args = "-v"
-            };
+                //ReadResult(worker.Process, worker.Callback);
+                OutputResult(worker.Process, myTerminalLog, myScroller, worker.Callback);
+            }
 
-            p = processManager.Start(command);
-            //processManager.OutputResult(p, myTerminalLog, myScroller, CheckDockerVersion);
-            processManager.ReadResult(p, CheckDockerVersion);
-
-            //REPOSITORY: inputoutput/cardano-node  (look for this tag)
-            //TAG: latest
-            //IMAGE ID
-            //CREATED
-            //SIZE
-            command.args = "image ls";
-            p = processManager.Start(command);
-            //processManager.OutputResult(p, myTerminalLog, myScroller, CheckImageExist);
-            processManager.ReadResult(p, CheckImageExist);
-
-            //You can run these in docker as much as you want, it will not create new ones
-            //pc1.args = "volume create cardano-node-data"; //running containers
-            //pc1.args = "volume create cardano-node-ipc"; //all containers
-
-
-            //pc1.args = "volume ls"; //volumes
-
+            
             //ancestor=inputoutput/cardano-node:latest checks image with tag latest
             //ancestor=inputoutput/cardano-node checks for image regarless of tag
             //loop through containers "container ls --filter ancestor=inputoutput/cardano-node" - for stopping running
@@ -132,18 +97,14 @@ namespace CardanoManagementTool
             //p1.OutputResult(myTerminalLog, myScroller);
 
 
-
         }
-    }
 
-    public static class ProcessExtensions
-    {
-        public async static void ReadResult(this ProcessManager pm,
-            Process process,
-            Func<string, bool> callBack)
+        public async static void ReadResult(
+           Process process,
+           Func<string, bool> callBack)
         {
             string line;
-            if (ProcessManager.CheckRunning(process))
+            if (PM.CheckRunning(process))
             {
                 await Task.Run(() =>
                 {
@@ -155,44 +116,47 @@ namespace CardanoManagementTool
                         }
                         if (reader.EndOfStream)
                         {
-                            pm.Stop(pm.FindProcessById(process.Id));
+                            PM.Stop(PM.FindProcessById(process.Id));
                         }
                     };
                 });
             }
         }
 
-
-        public async static void OutputResult(this ProcessManager pm,
+        public async static void OutputResult(
             Process process,
             TextBlock uiElement,
             ScrollViewer scroller,
             Func<string, bool> callBack)
         {
             string line;
-            if (ProcessManager.CheckRunning(process))
+            if (PM.CheckRunning(process))
             {
                 await Task.Run(() =>
                 {
                     _ = uiElement.DispatcherQueue.TryEnqueue(async () =>
-                      {
-                          using (StreamReader reader = process.StandardOutput)
-                          {
-                              while ((line = await reader.ReadLineAsync()) != null)
-                              {
-                                  callBack(line);
-                                  uiElement.Text += line + Environment.NewLine;
-                                  await scroller.ScrollToBottom();
-                              }
-                              if (reader.EndOfStream)
-                              {
-                                  pm.Stop(pm.FindProcessById(process.Id));
-                              }
-                          };
-                      });
+                    {
+                        using (StreamReader reader = process.StandardOutput)
+                        {
+                            while ((line = await reader.ReadLineAsync()) != null)
+                            {
+                                callBack(line);
+                                uiElement.Text += line + Environment.NewLine;
+                                await scroller.ScrollToBottom();
+                            }
+                            if (reader.EndOfStream)
+                            {
+                                PM.Stop(PM.FindProcessById(process.Id));
+                            }
+                        };
+                    });
                 });
             }
         }
+    }
+
+    public static class ProcessExtensions
+    {
 
         public async static Task ScrollToBottom(this ScrollViewer scroller)
         {

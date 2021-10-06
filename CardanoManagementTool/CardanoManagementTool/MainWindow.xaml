@@ -20,7 +20,7 @@
                        Foreground="Blue" 
                        FontWeight="Light" 
                        FontFamily="Arial" 
-                       FontStyle="Italic"/>
+                       FontStyle="Italic" />
             <ScrollViewer 
                   x:Name="myScroller"
                   Height="200" Width="500" 

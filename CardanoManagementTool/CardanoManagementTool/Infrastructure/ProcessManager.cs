@@ -18,13 +18,13 @@ namespace CardanoManagementTool.Infrastructure
     /// Process Manager has an internal mechanism that will check and make sure only one process
     /// of a time can run at any given moment
     /// </summary>
-    public class ProcessManager
+    public static class ProcessManager
     {
-        public List<(int Id, CommandType CommandType, Process Process)> Workers { get; set; } = new();
+        public static  List<(int Id, CommandType CommandType, Process Process)> Workers { get; set; } = new();
 
-        Func<CommandType, bool> StartOnlyOneCardanoNode = type => type == CommandType.StartCardanoNode;
+        static  Func<CommandType, bool> StartOnlyOneCardanoNode = type => type == CommandType.StartCardanoNode;
 
-        public Process Start(ProcessCommand command)
+        public static Process Start(ProcessCommand command)
         {
             Process process = new();
             if (ValidateRules(command.name))
@@ -44,22 +44,22 @@ namespace CardanoManagementTool.Infrastructure
             return process;
         }
 
-        public Process FindProcessById(int id)
+        public static Process FindProcessById(int id)
         {
             return Workers.Find(x => x.Id == id).Process;
         }
 
-        public Process FindProcessByCommandype(CommandType type)
+        public static Process FindProcessByCommandype(CommandType type)
         {
             return Workers.Find(x => x.CommandType == type).Process;
         }
 
-        public (int,CommandType,Process) FindWorkerByProcessorId(int id)
+        public static (int,CommandType,Process) FindWorkerByProcessorId(int id)
         {
             return Workers.Find(x => x.Id == id);
         }
 
-        public (int, CommandType, Process) FindWorkerByProcessorCommandype(CommandType type)
+        public static (int, CommandType, Process) FindWorkerByProcessorCommandype(CommandType type)
         {
             return Workers.Find(x => x.CommandType == type);
         }
@@ -69,7 +69,7 @@ namespace CardanoManagementTool.Infrastructure
         /// </summary>
         /// <param name="p"></param>
         /// <param name="name"></param>
-        public void Stop(Process p)
+        public static void Stop(Process p)
         {
             _ = Workers.Remove(FindWorkerByProcessorId(p.Id));
             p.Kill();
@@ -82,7 +82,7 @@ namespace CardanoManagementTool.Infrastructure
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        private bool ValidateRules(CommandType type)
+        private static bool ValidateRules(CommandType type)
         {
             var retVal = true;
             if (StartOnlyOneCardanoNode(type))
@@ -121,7 +121,7 @@ namespace CardanoManagementTool.Infrastructure
         /// <summary>
         /// Stops and removes any running processes
         /// </summary>
-        public void Shutdown()
+        public static void Shutdown()
         {
             foreach ((int Id, CommandType CommandType, Process Process) worker in Workers)
             {
