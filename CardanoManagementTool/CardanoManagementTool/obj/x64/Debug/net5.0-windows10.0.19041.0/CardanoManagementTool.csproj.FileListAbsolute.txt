@@ -47,9 +47,6 @@ C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\CardanoManagementTo
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\qualifiers.txt
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\qualifiers.txt.intermediate
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\MultipleQualifiersPerDimensionFound.txt
-C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.dll
-C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\ref\CardanoManagementTool.dll
-C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.pdb
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\App.xbf
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\MainWindow.xbf
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.exe
@@ -64,7 +61,6 @@ C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\Microsoft.WinUI.dll
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\Microsoft.Windows.SDK.NET.dll
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\WinRT.Runtime.dll
-C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.csproj.AssemblyReference.cache
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\App.g.i.cs
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\App.g.cs
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\MainWindow.g.i.cs
@@ -80,6 +76,9 @@ C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.AssemblyInfo.cs
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.csproj.CoreCompileInputs.cache
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.csproj.CopyComplete
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.dll
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\ref\CardanoManagementTool.dll
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.pdb
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.genruntimeconfig.cache
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\priconfig.xml
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\priconfig.xml.intermediate
@@ -96,3 +95,4 @@ C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\qualifiers.txt
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\qualifiers.txt.intermediate
 C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\MultipleQualifiersPerDimensionFound.txt
+C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.csproj.AssemblyReference.cache

@@ -8,28 +8,18 @@ using PM = CardanoManagementTool.Infrastructure.ProcessManager;
 
 namespace CardanoManagementTool.Infrastructure.Service
 {
-    public class CardanoNodeDockerService : IService
+    public class CardanoCLIService : IService
     {
-        private readonly ProcessCommand command = new() { file = "docker" };
-        private readonly string network;
+        private readonly ProcessCommand command = new() { file = "cardano-cli" };
 
-        public CardanoNodeDockerService(string network) 
-        {
-            this.network = network;
-        }
+        public CardanoCLIService() { }
 
         public List<(Process, Func<string, bool>)> Start()
         {
             List<(Process, Func<string, bool>)> _workers = new();
             //Looking for Docker version 20.10.8, build 3967b7d
- 
-            //Todo: Need to tell if docker is running or not
-            //Todo: Need to tell when we are finished with the stream
-            //Todo: Add to process manager that when I shut the last remaining
-            //  process that there is no more left (it hits an exception)
 
-            command.args = string.Format("run -e NETWORK={0} -v cardano-node-ipc:/ipc -v cardano-node-data:/data inputoutput/cardano-node", network);
-            command.name = CommandType.StartCardanoNode;
+            command.args = "-v";
             Process p = PM.Start(command);
             _workers.Add((PM.Start(command),
                 line =>

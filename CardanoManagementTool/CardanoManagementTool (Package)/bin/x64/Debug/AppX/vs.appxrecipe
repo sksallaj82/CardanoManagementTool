@@ -19,7 +19,7 @@
     <DeployOptionalPackages>false</DeployOptionalPackages>
     <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
     <LayoutDir>C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool %28Package%29\bin\x64\Debug\AppX</LayoutDir>
-    <RegisteredManifestChecksum>39572A63A75E865CF44F54E723061E5701AEE467032DA722C97BBE371C6FDFF7</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>F3B3107B36380107ECEBE9BA632B253F1E316D86EF629523949786F72420F6DC</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>ed79b0f3-7a5e-4cbe-a0f5-95e878f63959_1.0.0.0_x64__2pc2r4xyb48k0</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>ed79b0f3-7a5e-4cbe-a0f5-95e878f63959_2pc2r4xyb48k0!App</RegisteredUserModeAppID>
     <RegisteredPackageID>ed79b0f3-7a5e-4cbe-a0f5-95e878f63959</RegisteredPackageID>
@@ -30,17 +30,17 @@
     <AppXManifest Include="C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool %28Package%29\bin\x64\Debug\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2021-10-06T12:08:16.231</Modified>
+      <Modified>2021-10-07T09:34:08.916</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\App.xbf">
       <PackagePath>App.xbf</PackagePath>
-      <Modified>2021-10-06T12:08:14.037</Modified>
+      <Modified>2021-10-07T09:33:28.405</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\MainWindow.xbf">
       <PackagePath>MainWindow.xbf</PackagePath>
-      <Modified>2021-10-06T12:08:14.037</Modified>
+      <Modified>2021-10-07T09:33:28.405</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.UniversalCRT.Debug\10.0.19041.0\Redist\Debug\x64\ucrtbased.dll">
       <PackagePath>ucrtbased.dll</PackagePath>
@@ -82,7 +82,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool %28Package%29\bin\x64\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
-      <Modified>2021-10-06T12:08:16.170</Modified>
+      <Modified>2021-10-07T07:20:38.573</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\sksal\.nuget\packages\microsoft.projectreunion.foundation\0.8.4\lib\net5.0-windows\Microsoft.ApplicationModel.Resources.Projection.dll">
       <PackagePath>CardanoManagementTool\Microsoft.ApplicationModel.Resources.Projection.dll</PackagePath>
@@ -102,31 +102,31 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.deps.json">
       <PackagePath>CardanoManagementTool\CardanoManagementTool.deps.json</PackagePath>
-      <Modified>2021-10-06T12:08:14.909</Modified>
+      <Modified>2021-10-07T07:20:37.815</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.runtimeconfig.dev.json">
       <PackagePath>CardanoManagementTool\CardanoManagementTool.runtimeconfig.dev.json</PackagePath>
-      <Modified>2021-10-06T12:08:14.939</Modified>
+      <Modified>2021-10-07T07:20:37.819</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\App.xbf">
       <PackagePath>CardanoManagementTool\App.xbf</PackagePath>
-      <Modified>2021-10-06T12:08:14.037</Modified>
+      <Modified>2021-10-07T09:33:28.405</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\MainWindow.xbf">
       <PackagePath>CardanoManagementTool\MainWindow.xbf</PackagePath>
-      <Modified>2021-10-06T12:08:14.037</Modified>
+      <Modified>2021-10-07T09:33:28.405</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\obj\x64\Debug\net5.0-windows10.0.19041.0\apphost.exe">
       <PackagePath>CardanoManagementTool\CardanoManagementTool.exe</PackagePath>
-      <Modified>2021-10-06T12:08:14.485</Modified>
+      <Modified>2021-10-07T09:34:08.308</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.runtimeconfig.json">
       <PackagePath>CardanoManagementTool\CardanoManagementTool.runtimeconfig.json</PackagePath>
-      <Modified>2021-10-06T12:08:14.937</Modified>
+      <Modified>2021-10-07T07:20:37.818</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Workspace\CMT\CardanoManagementTool\CardanoManagementTool\bin\x64\Debug\net5.0-windows10.0.19041.0\CardanoManagementTool.dll">
       <PackagePath>CardanoManagementTool\CardanoManagementTool.dll</PackagePath>
-      <Modified>2021-10-06T12:08:14.454</Modified>
+      <Modified>2021-10-07T09:34:08.300</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

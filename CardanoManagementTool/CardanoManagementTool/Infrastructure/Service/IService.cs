@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CardanoManagementTool.Infrastructure.Service
 {
-    public interface ICardanoNodeService
+    public interface IService
     {
         public List<(Process, Func<string, bool>)> Start();
         public void Stop();

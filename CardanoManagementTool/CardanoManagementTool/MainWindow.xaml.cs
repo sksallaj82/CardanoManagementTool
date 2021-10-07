@@ -33,14 +33,14 @@ namespace CardanoManagementTool
     /// </summary>
     public sealed partial class MainWindow : Window
     {
-        public MainWindow() =>
-            InitializeComponent();
-
-
-
-        private void myButton_Click(object sender, RoutedEventArgs e)
+        public MainWindow()
         {
-            myButton.Content = "Clicked";
+            InitializeComponent();
+        }
+
+        private void myStartButton_Click(object sender, RoutedEventArgs e)
+        {
+            myStartButton.Content = "Clicked";
             //ProcessCommand commandTest = new()
             //{
             //    file = "ping",
@@ -52,7 +52,7 @@ namespace CardanoManagementTool
             //processManager.OutputResult(p, myTerminalLog, myScroller, CreateVolumes);
 
 
-            ICardanoNodeService nodeService = new CardanoNodeContainerWrapper(true).ICardanoNodeService;
+            IService nodeService = new CardanoNodeContainerFactory(true).IService;
 
             List<(Process Process, Func<string,bool> Callback)> workers = nodeService.Start();
             //PM.OutputResult(p, myTerminalLog, myScroller, CheckDockerVersion);
@@ -152,6 +152,11 @@ namespace CardanoManagementTool
                     });
                 });
             }
+        }
+
+        private void myStopButton_Click(object sender, RoutedEventArgs e)
+        {
+            PM.Stop(PM.FindProcessByCommandype(Infrastructure.CommandType.StartCardanoNode));
         }
     }
 

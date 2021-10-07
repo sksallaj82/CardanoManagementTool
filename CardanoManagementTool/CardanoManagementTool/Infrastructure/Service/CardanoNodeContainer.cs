@@ -10,28 +10,28 @@ using System.Threading.Tasks;
 /// </summary>
 namespace CardanoManagementTool.Infrastructure.Service
 {
-    public sealed class CardanoNodeContainerWrapper
+    public sealed class CardanoNodeContainerFactory
     {
-        public ICardanoNodeService ICardanoNodeService { get; private set; }
+        public IService IService { get; private set; }
 
-        public CardanoNodeContainerWrapper (bool isDocker)
+        public CardanoNodeContainerFactory (bool isDocker)
         {
-            ICardanoNodeService = isDocker ? new CardanoNodeDockerService() : new CardanoNodeBaseService();
+            IService = isDocker ? new DockerService() : new CardanoNodeWSLService();
         }
     }
 
-    public sealed class CardanoNodeContainer : ICardanoNodeService
+    public sealed class CardanoNodeProxy : IService
     {
-        private readonly ICardanoNodeService that;
+        private readonly IService that;
 
-        public CardanoNodeContainer(ICardanoNodeService that)
+        public CardanoNodeProxy(IService that)
         {
             this.that = that;
         }
 
-        List<(Process, Func<string, bool>)> ICardanoNodeService.Start() => Instance.Start();
-        void ICardanoNodeService.Stop() => this.Instance.Stop();
+        List<(Process, Func<string, bool>)> IService.Start() => Instance.Start();
+        void IService.Stop() => this.Instance.Stop();
 
-        private ICardanoNodeService Instance => that;
+        private IService Instance => that;
     }
 }

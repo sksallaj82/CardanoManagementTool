@@ -12,7 +12,8 @@
             <TextBlock Text="CARDANO MANAGEMENT TOOL" 
                        FontSize="24"
                        />
-            <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
+            <Button x:Name="myStartButton" Click="myStartButton_Click">Start</Button>
+            <Button x:Name="myStopButton" Click="myStopButton_Click">Stop</Button>
             <TextBlock 
                        Text="This text demonstrates some TextBlock properties." 
                        IsTextSelectionEnabled="True" 
